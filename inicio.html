@@ -17,7 +17,7 @@
         }
 
         .container {
-            margin-top: 15%;
+            margin-top: 10%;
             background: rgba(0, 0, 0, 0.5);
             padding: 20px;
             border-radius: 10px;
@@ -57,7 +57,7 @@
 <body>
     <div class="container">
         <h1>¡Bienvenido a nuestra página web!</h1>
-        <p>Fecha actual: <span id="current-date"></span></p>
+        <p>Fecha y hora actual: <span id="current-date-time"></span></p>
         <p>Visitas: <span id="visit-counter">0</span></p>
         <div class="button-container">
             <a href="https://example.com" class="redirect-button">Ir a otro sitio</a> <!-- Cambia la URL aquí -->
@@ -79,17 +79,20 @@
             visitCounter.textContent = visits; // Mostrar en la página
         }
 
-        // Función para mostrar la fecha actual
-        function displayCurrentDate() {
-            const currentDateElement = document.getElementById('current-date');
-            const today = new Date();
-            const formattedDate = today.toLocaleDateString(); // Formato de fecha local
-            currentDateElement.textContent = formattedDate;
+        // Función para mostrar la fecha y hora actual
+        function displayCurrentDateTime() {
+            const currentDateTimeElement = document.getElementById('current-date-time');
+            const now = new Date();
+            const formattedDateTime = now.toLocaleString(); // Formato de fecha y hora local
+            currentDateTimeElement.textContent = formattedDateTime;
         }
+
+        // Actualizar la fecha y hora cada segundo
+        setInterval(displayCurrentDateTime, 1000);
 
         // Llamar a las funciones al cargar la página
         updateVisitCounter();
-        displayCurrentDate();
+        displayCurrentDateTime();
     </script>
 </body>
 </html>
