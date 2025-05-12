@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            background-image: url('https://your-image-url.com/background.jpg'); /* Reemplaza con la URL de tu imagen */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            margin-top: 15%;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .redirect-button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .redirect-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Bienvenido a nuestra página web!</h1>
+        <p>Fecha actual: <span id="current-date"></span></p>
+        <p>Visitas: <span id="visit-counter">0</span></p>
+        <div class="button-container">
+            <a href="https://example.com" class="redirect-button">Ir a otro sitio</a> <!-- Cambia la URL aquí -->
+        </div>
+    </div>
+
+    <script>
+        // Función para manejar el contador de visitas
+        function updateVisitCounter() {
+            const visitCounter = document.getElementById('visit-counter');
+            let visits = localStorage.getItem('visits');
+
+            if (!visits) {
+                visits = 0;
+            }
+
+            visits = parseInt(visits) + 1; // Incrementar el contador
+            localStorage.setItem('visits', visits); // Guardar en localStorage
+            visitCounter.textContent = visits; // Mostrar en la página
+        }
+
+        // Función para mostrar la fecha actual
+        function displayCurrentDate() {
+            const currentDateElement = document.getElementById('current-date');
+            const today = new Date();
+            const formattedDate = today.toLocaleDateString(); // Formato de fecha local
+            currentDateElement.textContent = formattedDate;
+        }
+
+        // Llamar a las funciones al cargar la página
+        updateVisitCounter();
+        displayCurrentDate();
+    </script>
+</body>
+</html>
